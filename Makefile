@@ -3,4 +3,4 @@ ubuntu:
 macos:
 	g++ -O3 -o TimestampAC main.cpp
 windows:
-	cl /GL main.cpp
+	cl /GL /std:c++latest main.cpp
