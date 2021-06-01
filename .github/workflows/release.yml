@@ -46,9 +46,23 @@ jobs:
     needs: [build-linux, build-macos, build-windows]
     steps:
       - uses: actions/checkout@v2
+      - name: Download Ubuntu Binary
+        uses: actions/download-artifact@v2
+        with:
+          name: TimestampAC-ubuntu
+      - name: Download MacOS Binary
+        uses: actions/download-artifact@v2
+        with:
+          name: TimestampAC-macos
+      - name: Download Windows Binary
+        uses: actions/download-artifact@v2
+        with:
+          name: TimestampAC-windows.exe
+      - name: List files
+        run: dir
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          artifacts: "*"
+          artifacts: "TimestampAC-ubuntu,TimestampAC-macos,TimestampAC-windows.exe"
           tag: 1.0.0
