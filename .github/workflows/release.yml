@@ -5,8 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  build-ubuntu-18.04:
-    runs-on: ubuntu-18-04
+  build-ubuntu-18-04:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: Make
@@ -16,8 +16,8 @@ jobs:
         with:
           name: TimestampAC-ubuntu18.04
           path: TimestampAC
-  build-ubuntu-20.04:
-    runs-on: ubuntu-20-04
+  build-ubuntu-20-04:
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Make
