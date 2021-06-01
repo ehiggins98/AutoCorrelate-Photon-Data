@@ -39,7 +39,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: TimestampAC-windows
+          name: TimestampAC-windows.exe
           path: TimestampAC
   release:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
       - name: Download Windows Binary
         uses: actions/download-artifact@v2
         with:
-          name: TimestampAC-windows
+          name: TimestampAC-windows.exe
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
