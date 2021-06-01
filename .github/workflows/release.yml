@@ -79,10 +79,6 @@ jobs:
           path: windows
       - name: List files
         run: |
-          ls
-          cd ubuntu20.04
-          ls
-          cd ..
           mv ubuntu18.04/TimestampAC TimestampAC-ubuntu18.04
           mv ubuntu20.04/TimestampAC TimestampAC-ubuntu20.04
           mv macos/TimestampAC TimestampAC-macos
@@ -91,5 +87,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          artifacts: "TimestampAC-ubuntu18.04,Timestamp-ubuntu20.04,TimestampAC-macos,TimestampAC-windows.exe"
+          artifacts: "TimestampAC-ubuntu18.04,TimestampAC-ubuntu20.04,TimestampAC-macos,TimestampAC-windows.exe"
           tag: 1.0.0
