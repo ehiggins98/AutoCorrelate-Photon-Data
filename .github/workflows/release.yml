@@ -5,8 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
+  build-ubuntu-18.04:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: Make
@@ -14,7 +14,18 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: TimestampAC-ubuntu
+          name: TimestampAC-ubuntu18.04
+          path: TimestampAC
+  build-ubuntu-20.04:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Make
+        run: make ubuntu
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: TimestampAC-ubuntu20.04
           path: TimestampAC
 
   build-macos:
@@ -43,14 +54,19 @@ jobs:
           path: TimestampAC.exe
   release:
     runs-on: ubuntu-latest
-    needs: [build-linux, build-macos, build-windows]
+    needs: [build-ubuntu-18.04, build-ubuntu-20.04, build-macos, build-windows]
     steps:
       - uses: actions/checkout@v2
-      - name: Download Ubuntu Binary
+      - name: Download Ubuntu 18.04 Binary
         uses: actions/download-artifact@v2
         with:
-          name: TimestampAC-ubuntu
-          path: ubuntu
+          name: TimestampAC-ubuntu18.04
+          path: ubuntu18.04
+      - name: Download Ubuntu 20.04 Binary
+        uses: actions/download-artifact@v2
+        with:
+          name: TimestampAC-ubuntu20.04
+          path: ubuntu20.04
       - name: Download MacOS Binary
         uses: actions/download-artifact@v2
         with:
@@ -63,12 +79,13 @@ jobs:
           path: windows
       - name: List files
         run: |
-          mv ubuntu/TimestampAC TimestampAC-ubuntu
+          mv ubuntu18.04/TimestampAC TimestampAC-ubuntu18.04
+          mv ubuntu20.04/TimestampAC TimestampAC-ubuntu20.04
           mv macos/TimestampAC TimestampAC-macos
           mv windows/TimestampAC.exe TimestampAC-windows.exe
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          artifacts: "TimestampAC-ubuntu,TimestampAC-macos,TimestampAC-windows.exe"
+          artifacts: "TimestampAC-ubuntu18.04,Timestamp-ubuntu20.04,TimestampAC-macos,TimestampAC-windows.exe"
           tag: 1.0.0
