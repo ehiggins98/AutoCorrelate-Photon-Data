@@ -62,5 +62,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          artifacts: "TimestampAC-ubuntu,TimestampAC-macos,TimestampAC-windows"
+          artifacts: "*"
           tag: latest
