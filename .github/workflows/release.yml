@@ -50,19 +50,22 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: TimestampAC-ubuntu
-          path: TimestampAC-ubuntu
+          path: ubuntu
       - name: Download MacOS Binary
         uses: actions/download-artifact@v2
         with:
           name: TimestampAC-macos
-          path: TimestampAC-macos
+          path: macos
       - name: Download Windows Binary
         uses: actions/download-artifact@v2
         with:
           name: TimestampAC-windows.exe
-          path: TimestampAC-windows.exe
+          path: windows
       - name: List files
-        run: dir
+        run: |
+          dir
+          cd ubuntu
+          dir
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
