@@ -1,0 +1,70 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Configure
+      run: ./configure
+    - name: Make
+      run: make
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: TimestampAC-ubuntu
+        path: TimestampAC
+  
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure
+        run: ./configure
+      - name: Make
+        run: make
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: TimestampAC-macos
+          path: TimestampAC
+      
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Build
+        run: nmake
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: TimestampAC-windows
+          path: TimestampAC
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Ubuntu Binary
+        uses: actions/download-artifact@v2
+        with:
+          name: TimestampAC-ubuntu
+      - name: Download MacOS Binary
+        uses: actions/download-artifacts@v2
+        with:
+          name: TimestampAC-macos
+      - name: Download Windows Binary
+        uses: actions/download-artifacts@v2
+        with:
+          name: TimestampAC-windows
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          artifacts: "TimestampAC-ubuntu,TimestampAC-macos,TimestampAC-windows"
+          tag: latest
+          
