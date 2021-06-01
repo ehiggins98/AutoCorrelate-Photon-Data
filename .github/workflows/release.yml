@@ -63,9 +63,9 @@ jobs:
           path: windows
       - name: List files
         run: |
-          dir
-          cd ubuntu
-          dir
+          mv ubuntu/TimestampAC TimestampAC-ubuntu
+          mv macos/TimestampAC TimestampAC-macos
+          mv windows/TimestampAC.exe TimestampAC-windows.exe
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
