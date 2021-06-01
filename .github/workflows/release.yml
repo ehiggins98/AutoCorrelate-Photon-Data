@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Configure
-      run: ./configure
     - name: Make
       run: make
     - name: Upload Artifact
@@ -23,8 +21,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Configure
-        run: ./configure
       - name: Make
         run: make
       - name: Upload Artifact
