@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Make
-      run: make
+      run: make linux
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Make
-        run: make
+        run: make macos
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build
-        run: nmake
+        run: nmake windows
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -51,11 +51,11 @@ jobs:
         with:
           name: TimestampAC-ubuntu
       - name: Download MacOS Binary
-        uses: actions/download-artifacts@v2
+        uses: actions/download-artifact@v2
         with:
           name: TimestampAC-macos
       - name: Download Windows Binary
-        uses: actions/download-artifacts@v2
+        uses: actions/download-artifact@v2
         with:
           name: TimestampAC-windows
       - name: Create Release

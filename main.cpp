@@ -5,6 +5,10 @@
 #include <vector>
 #include <unordered_map>
 
+#ifdef _WIN32
+#include <intrin.h>
+#endif
+
 struct command_line_args
 {
     int alpha;
@@ -175,7 +179,11 @@ int main(int argc, char *argv[])
     {
         uint32_t val = 0;
         input_file.read(reinterpret_cast<char *>(&val), sizeof(val));
+#ifdef _WIN32
+        data.push_back(_byteswap_ulong(val));
+#else
         data.push_back(__builtin_bswap32(val));
+#endif
     }
 
     input_file.close();
