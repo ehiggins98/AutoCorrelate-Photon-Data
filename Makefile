@@ -1,4 +1,4 @@
-ubuntu:
+linux:
 	g++ -O3 -o TimestampAC main.cpp
 macos:
 	g++ -O3 -o TimestampAC main.cpp

@@ -140,7 +140,7 @@ command_line_args parse_command_line_args(int argc, char *argv[])
             std::cout << "Invalid argument " << val << ". Valid arguments are\n"
                       << "\t --input-file-name (-if) (required): the name of the input file containing binary data"
                       << "\t --output-file-name (-of) (required): the name of the file where output data should be written"
-                      << "\t --alpha (-a) (optional, default value 5): shift value\n"
+                      << "\t --alpha (-a) (optional, default value 5): the number of bins by which to shift\n"
                       << "\t --start-log-time (-s) (optional, default value -6.5): the base-10 log of the first bin size\n"
                       << "\t --inc-log-time (-i) (optional, default value 0.1): the base-10 log of the bin size increment\n"
                       << "\t --end-log-time (-e) (optional, default value 1): the base-10 log of the last bin size" << std::endl;

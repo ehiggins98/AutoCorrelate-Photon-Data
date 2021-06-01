@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Make
-        run: make ubuntu
+        run: make linux
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Make
-        run: make ubuntu
+        run: make linux
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
