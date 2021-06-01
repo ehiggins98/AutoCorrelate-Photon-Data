@@ -79,6 +79,10 @@ jobs:
           path: windows
       - name: List files
         run: |
+          ls
+          cd ubuntu20.04
+          ls
+          cd ..
           mv ubuntu18.04/TimestampAC TimestampAC-ubuntu18.04
           mv ubuntu20.04/TimestampAC TimestampAC-ubuntu20.04
           mv macos/TimestampAC TimestampAC-macos
