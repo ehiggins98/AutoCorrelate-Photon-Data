@@ -6,13 +6,20 @@ There are two ways to install the executable: installing a prebuilt binary or bu
 
 ## Prebuilt Binary
 
-Download the file corresponding to your system from the [Releases Page](https://github.com/ehiggins98/AutoCorrelate-Photon-Data/releases). If there isn't one for your system either build from source, or let me know and I can likely build a binary for you.
+Download the file corresponding to your system using one of the following links. If there isn't one for your system either build from source, or let me know and I can likely build a binary for you.
 
 If on MacOS or Linux, you'll need to run the following command to make the binary executable:
 
 ```
 chmod +x <file name>
 ```
+
+| Operating System | Link                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------- |
+| Windows          | https://github.com/ehiggins98/AutoCorrelate-Photon-Data/releases/download/1.0.0/TimestampAC-windows.exe |
+| MacOS            | https://github.com/ehiggins98/AutoCorrelate-Photon-Data/releases/download/1.0.0/TimestampAC-macos       |
+| Ubuntu 18.04     | https://github.com/ehiggins98/AutoCorrelate-Photon-Data/releases/download/1.0.0/TimestampAC-ubuntu18.04 |
+| Ubuntu 20.04     | https://github.com/ehiggins98/AutoCorrelate-Photon-Data/releases/download/1.0.0/TimestampAC-ubuntu20.04 |
 
 ## Building from Source
 
