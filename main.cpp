@@ -22,7 +22,7 @@ struct command_line_args
 std::vector<uint32_t> compute_bin_numbers(const std::vector<uint32_t> &data, double bin_time)
 {
     std::vector<uint32_t> bin_numbers(data.size());
-    int i;
+    unsigned int i;
     for (i = 0; i < data.size(); i++)
     {
         bin_numbers[i] = (int)floor(data[i] / bin_time);
@@ -35,14 +35,14 @@ uint64_t compute_shifted_sum(std::vector<uint32_t> &data, int alpha)
 {
     uint64_t shift_sum = 0;
 
-    int i = 0;
+    unsigned int i = 0;
     while (i < data.size())
     {
         int bin_count = 0;
         int shift_count = 0;
         int boundary = -1;
 
-        int j;
+        unsigned int j;
         for (j = i; data[j] <= data[i] + alpha && j < data.size(); j++)
         {
             if (data[j] == data[i])
@@ -165,6 +165,7 @@ double compute_data_point(const std::vector<uint32_t> &raw_data, int alpha, doub
 
     double shift_avg = ((double)shift_sum / (max_bin - alpha));
     double avg_squared = pow((double)bin_numbers.size() / max_bin, 2);
+
     return shift_avg / avg_squared - 1;
 }
 
@@ -173,7 +174,7 @@ int main(int argc, char *argv[])
     command_line_args args = parse_command_line_args(argc, argv);
 
     std::vector<uint32_t> data;
-    std::ifstream input_file(args.input_file_name);
+    std::ifstream input_file(args.input_file_name, std::ios_base::in | std::ios_base::binary);
 
     while (!input_file.eof())
     {
