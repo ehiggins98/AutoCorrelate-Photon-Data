@@ -47,7 +47,7 @@ jobs:
       - name: Install Mingw
         run: sudo apt-get install mingw-w64
       - name: Build
-        run: nmake windows
+        run: make windows
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
